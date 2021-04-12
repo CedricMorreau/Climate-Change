@@ -1,15 +1,17 @@
 .alinea2{
     float: right;
     position: relative;
+    margin-top: 60vw;
+    margin-bottom: 60vw;
 
     h2{
         position: absolute;
         right: 0;
-        top: -50%;
+        top: -55%;
     }
 
     img{
-        padding-top: 2%;
+
         width: 57%;
         float: right;
     }
@@ -18,14 +20,14 @@
         position: absolute;
         width: 50%;
         right: 40%;
-        top: 20%;
+        bottom: 70%;
     }
 
     p{
         line-height: 30px;
         font-size: 1.5rem;
         width: 35%;
-        margin-top: 25%;
+        margin-top: 20%;
     }
     
 }

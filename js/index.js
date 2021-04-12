@@ -16,6 +16,7 @@ window.addEventListener('scroll', function(){
     parallax('.alinea1_rect', window.scrollY, 0.2);
 
     parallax('.alinea2_title', window.scrollY, 0.2);
+    parallax('.alinea2_rect', window.scrollY, 0.3);
+    parallax('.alinea2_txt', window.scrollY, 0.1);
 
-    parallax('.alinea2_rect', window.scrollY, 0.25);
 });
