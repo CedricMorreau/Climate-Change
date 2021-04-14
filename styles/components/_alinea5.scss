@@ -1,0 +1,36 @@
+.alinea5{
+    position: relative;
+    margin-bottom: 80vw;
+
+    h2{
+        left: 2vw;
+        position: absolute;
+        z-index: 9;
+        bottom: 115%;
+    }
+
+    .alinea5_img{
+        padding-top: 2%;
+        width: 55%;
+    }
+
+    .alinea5_rect{
+        position: absolute;
+        width: 45%;
+        left: 30%;
+        bottom: 70%;
+    }
+
+    p{
+        position: absolute;
+        width: 30%;
+        right: 11%;
+        bottom: 56%;
+
+        a{
+            color: #FCF9C2;
+        }
+        
+    }
+
+}

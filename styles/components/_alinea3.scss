@@ -1,0 +1,40 @@
+.alinea3{
+    position: relative;
+    margin-bottom: 80vw;
+
+
+    h2{
+        left: 2vw;
+        position: absolute;
+        z-index: 9;
+        left: 10%;
+        bottom: 43%;
+    }
+
+    .alinea3_img{
+        padding-top: 2%;
+        padding-left: 5%;
+        width: 50%;
+    }
+
+    .alinea3_img2{
+        position: absolute;
+        left: 0;
+        bottom: 22%;
+        width: 30%;
+    }
+
+    .alinea3_rect{
+        position: absolute;
+        width: 35%;
+        top: 75%;
+        left: 45%;
+    }
+
+    p{
+        position: absolute;
+        width: 40%;
+        right: 0;
+        bottom: 5%;
+    }
+}

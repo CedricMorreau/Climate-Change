@@ -1,0 +1,39 @@
+.alinea4{
+    position: relative;
+    float: right;
+    margin-bottom: 80vw;
+    width: 100%;
+
+    h2{
+        position: absolute;
+        right: 10%;
+        bottom: 457%;
+    }
+
+    .alinea4_img{
+        width: 55%;
+        float: right;
+        padding-right: 5%;
+        padding-top: 2%;
+    }
+
+    .alinea4_img2{
+        position: absolute;
+        right: 0;
+        bottom: 210%;
+        width: 30%;
+    }
+
+    .alinea4_rect{
+        position: absolute;
+        width: 45%;
+        bottom: 320%;
+        right: 39%;
+    }
+
+    p{
+        width: 40%;
+        position: absolute;
+        bottom: 100%;
+    }
+}

@@ -1,0 +1,17 @@
+#dataviz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+.map{
+    .country_wrapper{
+        fill: #FCF9C2;
+    }
+
+    path{
+        stroke: #0C0404;
+        stroke-width: 1px;
+
+    }
+}
+}
