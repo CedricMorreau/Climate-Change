@@ -1,3 +1,17 @@
+.back_button{
+    position: absolute;
+    width: 1.5vw;
+    padding: 20px;
+
+    a{
+        padding: 10px;
+    }
+
+    g{
+        fill: #FCF9C2;
+    }
+}
+
 #dataviz{
     display: flex;
     justify-content: center;
