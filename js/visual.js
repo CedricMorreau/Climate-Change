@@ -1,11 +1,11 @@
 var width = d3.select("#dataviz").node().getBoundingClientRect().width;
-var height = 0.45 * width;
+var height = 0.50 * width;
 
 let projection = d3.geoMercator()
 .translate([width / 2, height / 2]) 
-.scale(1500) 
+.scale(1200) 
 .rotate([-133, 50]) //add a third index of 10
-.center([0, 24]);
+.center([5, 25]);
 
 
 var svg = d3.select("#dataviz")
@@ -43,7 +43,6 @@ async function getData() {
             newData[timeKey] = []
         }
 
-        console.log(newData)
 
         for (let i = 0; i < data.length; i++) {
             var timeKey = data[i]["acq_date"]
@@ -62,7 +61,6 @@ async function getData() {
     var startDate = parseTime(extent[0])
         endDate = parseTime(extent[1]);
     
-    
     var margin = { top: 0, right: 50, bottom: 0, left: 50 },
         width = 960 - margin.left - margin.right,
         height = 100 - margin.top - margin.bottom;
@@ -70,8 +68,6 @@ async function getData() {
     var moving = false;
     var currentValue = 0;
     var targetValue = width;
-    
-    ////////// slider //////////
     
     var svgSlider = d3
         .select("#slider")
@@ -115,8 +111,7 @@ async function getData() {
                     update(x.invert(event.x));
                 })
                 .on("end", function(event, d){
-                    console.log("end")
-                    console.log(x.invert(event.x))
+
                     displayVisual(newData[formatTime(x.invert(event.x))])
                 })
         );
@@ -134,12 +129,16 @@ async function getData() {
         .attr("text-anchor", "middle")
         .text(function (d) {
             return formatDate(d);
-        });
+        })
+        .each(function(d){
+            var tempMonth = formatDate(d)
+            this.classList.add("temp" + tempMonth);
+        })
     
     var handle = slider
         .insert("circle", ".track-overlay")
         .attr("class", "handle")
-        .attr("r", 9);
+        .attr("r", 12.5);
     
     var label = slider
         .append("text")
@@ -148,7 +147,6 @@ async function getData() {
         .text(formatTime(startDate))
         .attr("transform", "translate(0," + -25 + ")");
     
-    //// Play button
     
     var playButton = d3.select("#play-button");
     
@@ -161,10 +159,10 @@ async function getData() {
             button.text("Play");
         } else {
             moving = true;
-            timer = setInterval(step, 1000);
+            timer = setInterval(step, 750);
             button.text("Pause");
         }
-        console.log("Slider moving: " + moving);
+
     });
     
     function step() {
@@ -177,20 +175,16 @@ async function getData() {
             clearInterval(timer);
             // timer = 0;
             playButton.text("Play");
-            console.log("Slider moving: " + moving);
+
         } 
     }
     
-
-
     
     function update(h) {
-        
-        console.log(formatTime(h))
+    
         handle.attr("cx", x(h));
         label.attr("x", x(h))
             .text(formatTime(h));
-
         
     }
 
@@ -231,22 +225,9 @@ function displayVisual(data) {
         .attr("cy", function (d) {
             return projection([d.longitude, d.latitude])[1]
         })
-        .attr("r", 5)
-        .style("fill", "#801100")
+        .attr("r", function(d){
+            return d.bright_ti4 / 17 - 12
+        })
+        .attr("class", "dots")
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

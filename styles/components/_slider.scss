@@ -1,6 +1,7 @@
 #slider{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 #vis{
@@ -43,7 +44,7 @@
     stroke-opacity: 0.5;
     stroke-width: 1.25px;
     opacity: .8;
-
+    
 }
 
 
@@ -69,6 +70,58 @@
 
 text{
     fill: #FCF9C2;
+    font-weight: bold;
     font-size: 0.9rem;
 
+}
+
+
+.tempJan{
+    fill: #cc0000;
+}
+
+.tempFeb{
+    fill: #cc0000;
+}
+
+.tempMar{
+    fill: #cc0000;
+}
+
+.tempApr{
+    fill: #cc0000;
+}
+
+.tempMay{
+    fill: #e06666
+}
+
+.tempJun{
+    fill: #ea9999
+}
+
+.tempJul{
+    fill: #ea9999;
+    
+}
+
+.tempAug{
+    fill: #ea9999;
+}
+
+.tempSep{
+    fill: #e06666;
+}
+
+
+.tempOct{
+    fill: #d63232;
+}
+
+.tempNov{
+    fill: #d63232;
+}
+
+.tempDec{
+    fill: #cc0000;
 }
