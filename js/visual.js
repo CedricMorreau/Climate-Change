@@ -54,11 +54,10 @@ async function getData() {
         
         displayVisual(newData["2019-01-01"]) 
 
-        var dataset;
+ 
     
-    var formatDateIntoYear = d3.timeFormat("%Y");
-    var formatDate = d3.timeFormat("%b %Y");
-    var parseDate = d3.timeParse("%m/%d/%y");
+    var formatDate = d3.timeFormat("%b");
+    
     
     var startDate = parseTime(extent[0])
         endDate = parseTime(extent[1]);
@@ -134,7 +133,7 @@ async function getData() {
         .attr("y", 10)
         .attr("text-anchor", "middle")
         .text(function (d) {
-            return formatDateIntoYear(d);
+            return formatDate(d);
         });
     
     var handle = slider
@@ -146,7 +145,7 @@ async function getData() {
         .append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
-        .text(formatDate(startDate))
+        .text(formatTime(startDate))
         .attr("transform", "translate(0," + -25 + ")");
     
     //// Play button
@@ -162,7 +161,7 @@ async function getData() {
             button.text("Play");
         } else {
             moving = true;
-            timer = setInterval(step, 100);
+            timer = setInterval(step, 1000);
             button.text("Pause");
         }
         console.log("Slider moving: " + moving);
@@ -170,7 +169,7 @@ async function getData() {
     
     function step() {
         update(x.invert(currentValue));
-        displayVisual(x.invert(currentValue))
+        displayVisual(newData[formatTime(x.invert(currentValue))]);
         currentValue = currentValue + targetValue / 151;
         if (currentValue > targetValue) {
             moving = false;
@@ -182,62 +181,8 @@ async function getData() {
         } 
     }
     
-    ////////// plot //////////
-    
-    var svgPlot = d3
-        .select("#vis")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height);
-    
-    var plot = svgPlot
-        .append("g")
-        .attr("class", "plot")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    
-    d3.csv("circles.csv", prepare).then(processData);
-    
-    function processData(data) {
-        dataset = data;
-    
-        drawPlot(dataset);
-    };
-    
-    function prepare(d) {
-        d.id = d.id;
-        d.date = parseDate(d.date);
-        return d;
-    }
-    
-    function drawPlot(data) {
-        var locations = plot.selectAll(".location").data(data);
-    
-        // if filtered dataset has more circles than already existing, transition new ones in
-        locations
-            .enter()
-            .append("circle")
-            .attr("class", "location")
-            .attr("cx", function (d) {
-                return x(d.date);
-            })
-            .attr("cy", height / 2)
-            .style("fill", function (d) {
-                return d3.hsl(d.date / 1000000000, 0.8, 0.8);
-            })
-            .style("stroke", function (d) {
-                return d3.hsl(d.date / 1000000000, 0.7, 0.7);
-            })
-            .style("opacity", 0.5)
-            .attr("r", 8)
-            .transition()
-            .duration(400)
-            .attr("r", 25)
-            .transition()
-            .attr("r", 8);
-    
-        // if filtered dataset has less circles than already existing, remove excess
-        locations.exit().remove();
-    }
+
+
     
     function update(h) {
         
@@ -247,12 +192,6 @@ async function getData() {
             .text(formatTime(h));
 
         
-    
-        // // filter data set and redraw plot
-        // var newData = dataset.filter(function (d) {
-        //     return d.date < h;
-        // });
-        // drawPlot(newData);
     }
 
     });
