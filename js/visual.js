@@ -229,5 +229,5 @@ function displayVisual(data) {
             return d.bright_ti4 / 17 - 12
         })
         .attr("class", "dots")
-
+  
 }
